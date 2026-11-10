@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Kabupaten Kebumen</title>
+
+    <!-- Library Leaflet CSS -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 10px;
+        }
+
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Peta Kabupaten Kebumen</h2>
+
+    <div id="map"></div>
+
+    <!-- Library Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <script>
+        // Koordinat pusat Kabupaten Kebumen
+        var kebumen = [-7.6686, 109.6522];
+
+        // Membuat peta dengan zoom awal 12
+        var map = L.map('map').setView(kebumen, 12);
+
+        // Menggunakan OpenStreetMap sebagai background tile
+        L.tileLayer(
+            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }
+        ).addTo(map);
+
+        // Membuat marker
+        var marker = L.marker(kebumen).addTo(map);
+
+        // Popup pada marker
+        marker.bindPopup(
+            '<b>Kabupaten Kebumen</b><br>' +
+            'Nama: Enira Suryaningsih<br>' +
+            'NIM: 25/560499/PTK/16568'
+        );
+
+        // Popup langsung terbuka saat halaman dimuat
+        marker.openPopup();
+
+    </script>
+
+</body>
+</html>
